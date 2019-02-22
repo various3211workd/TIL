@@ -10,5 +10,5 @@ Install-Module -Name Pscx
 
 2. visual studio固有の変数をimportする
 ```
-Import-VisualStudioVars
+Import-VisualStudioVars 2017 amd64
 ```
