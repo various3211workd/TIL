@@ -1,9 +1,18 @@
 # firebase
 
+## Deploy
+deployするときの手順メモ
+
+```
+$ npm run build
+$ npm run generate
+$ firebase deploy
+```
+
 ## Authentication
 firebase console内のログインの方法を指定する
 
-### googleログインの場合
+#### googleログインの場合
 ```
 <button @click="googleLogin">googleでログイン</button>
 
@@ -11,7 +20,7 @@ firebase console内のログインの方法を指定する
 
 firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
 ```
-### メールアドレスとパスワードの場合
+#### メールアドレスとパスワードの場合
 ```
 メール<br>  
 <input type="text" v-model="email" class="input"><br>  
