@@ -8,3 +8,13 @@ match fs::create_dir("a") {
 }
 ```
 
+### OpenOption
+```rust
+use std::fs::OpenOptions;
+
+let file = OpenOptions::new()
+  .write(true)
+  .create(true)
+  .truncate(true)
+  .open("foo.txt");
+```
