@@ -18,3 +18,11 @@ let file = OpenOptions::new()
   .truncate(true)
   .open("foo.txt");
 ```
+### pathbuf
+```rust
+// "str"
+current_dir().unwrap()
+
+// str
+current_dir().unwrap().display()
+```
