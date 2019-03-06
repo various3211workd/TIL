@@ -1,5 +1,10 @@
 # firebase
 
+## 実行
+```
+$ npm run dev
+```
+
 ## Deploy
 deployするときの手順メモ
 
