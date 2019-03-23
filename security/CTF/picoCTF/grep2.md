@@ -5,7 +5,7 @@ This one is a little bit harder. Can you find the flag in /problems/grep-2_2_413
 shellでログインして
 
 ```
-grep pico
+grep -r pico
 ```
 
 で終了。
