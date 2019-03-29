@@ -14,3 +14,5 @@ You're not google! Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/2010
 
 送信される値を書き換えることにした。
 
+googleに関するUser Agentを検索し`googlebot`に書き換え送信するとフラグが入手できた。
+
