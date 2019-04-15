@@ -19,9 +19,9 @@
 1. OpenThreadで標的スレッドへのハンドルを取得
 
 2. SuspendThreadを呼び出しスレッドを中断モードにする
- > ```c
- > SuspendThread(HANDLE hThread);  
- > ```
+ ```c
+ SuspendThread(HANDLE hThread);  
+ ```
 
  > サスペンドカウンタという概念がある。  
  > 0 => 実行 SuspendThread()でインクリメント  
@@ -30,7 +30,7 @@
 3. GetThreadContext
 
 4. 悪意のあるコードをインジェクションする
- > VirtualAllocExとWriteProcessMemoryなどを使用し、メモリを割り当ててコードを実行する。  
+ > VirtualAllocExとWriteProcessMemoryなどを使用し、メモリを割り当ててコードを実行する。
 
 5. SetThreadContext
  > ターゲットスレッドの次の命令のアドレスを含むレジスタ(EIPレジスタ)を変更する。
