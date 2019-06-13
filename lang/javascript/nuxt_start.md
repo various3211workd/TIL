@@ -22,3 +22,10 @@ PS>npm run dev
 or
 PS>yarn dev
 ```
+
+4. ncuの追加
+```powershell
+PS>npm install -g npm-check-updates
+PS>ncu
+PS>ncu -u
+```
