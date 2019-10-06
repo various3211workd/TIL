@@ -6,5 +6,5 @@
 from pwn import *
 
 s = ssh(host='hostname', user='username', pass='pass', port=port)
-s.run(./exaple1)
+p = s.run(./exaple1)
 ```
