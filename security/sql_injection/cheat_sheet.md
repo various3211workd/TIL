@@ -75,3 +75,17 @@ print()
 ?id=' || '1'='1' #
 ?id=' || '1'='1' && id = 'admin' #
 ```
+
+* 文字列match
+
+Mysqlでは大文字と小文字を区別しないのでBackEnd側で文字列が含まれていないかを検査していても回避することができる。
+
+```php
+# BackEnd
+<?php
+if(@ereg("admin",$_GET[id])) echo "error";
+?>
+
+# query
+?id=ADMIN
+```
