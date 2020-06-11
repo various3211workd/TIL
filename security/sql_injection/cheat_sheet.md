@@ -89,3 +89,11 @@ if(@ereg("admin",$_GET[id])) echo "error";
 # query
 ?id=ADMIN
 ```
+
+* charで変換する
+
+`admin`が送信される
+
+```
+?no=-1 or id=char(97, 100, 109, 105, 110)-- -
+```
